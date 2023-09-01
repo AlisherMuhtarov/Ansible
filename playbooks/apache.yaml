@@ -1,7 +1,19 @@
 ---
-- name: Ping EC2 Instances
-  hosts: all  # Replace with the desired group or host from your dynamic inventory
-  gather_facts: no  # Disable gathering facts for faster execution
+- name: Install and Start Apache on EC2 Instances
+  hosts: all  # Replace with the appropriate host or group from your dynamic inventory
+  become: yes  # Run tasks with sudo
   tasks:
-    - name: Ping the EC2 instances
-      ping:
+    - name: Install Apache package
+      yum:
+        name: httpd
+        state: present
+
+    - name: Start Apache service
+      service:
+        name: httpd
+        state: started
+
+    - name: Enable Apache to start on boot
+      service:
+        name: httpd
+        enabled: yes
