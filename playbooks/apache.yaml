@@ -1,6 +1,6 @@
 ---
 - name: Install and Start Apache on EC2 Instances
-  hosts: local  # Replace with the appropriate host or group from your dynamic inventory
+  hosts: all  # Replace with the appropriate host or group from your dynamic inventory
   become: yes  # Run tasks with sudo
   tasks:
     - name: Install Apache package
