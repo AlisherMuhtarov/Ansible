@@ -2,6 +2,8 @@
 - name: Install and Start Apache on EC2 Instances
   hosts: all  # Replace with the appropriate host or group from your dynamic inventory
   become: yes  # Run tasks with sudo
+  vars:
+    ANSIBLE_HOST_KEY_CHECKING: false
   tasks:
     - name: Install Apache package
       yum:
